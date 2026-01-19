@@ -1,0 +1,22 @@
+# $schema: https://raw.githubusercontent.com/knative/func/70529438/schema/func_yaml-schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/knative/func/70529438/schema/func_yaml-schema.json
+specVersion: 0.36.0
+name: hello
+runtime: go
+registry: ghcr.io/petterthunaes
+image: ghcr.io/petterthunaes/shiny-spork/hello:latest
+namespace: default
+created: 2026-01-19T12:18:16.256063+01:00
+build:
+
+build:
+  git:
+    url: https://github.com/petterthunaes/shiny-spork.git   # required, git repository with the function source code
+    revision: main                                    # optional, git revision to be used (branch, tag, commit)
+    # contextDir: myfunction                          # optional, needed only if the function is not located in the repository root folder
+  buildpacks: []
+  builder: ""
+  buildEnvs: []
+deploy:
+  namespace: default
+  image: ghcr.io/petterthunaes/shiny-spork/hello@sha256:72a5c265050829804c27a576c633bb7cd0a6f6986c75dedc36f929d5195fb4cf
