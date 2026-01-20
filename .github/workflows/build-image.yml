@@ -44,4 +44,5 @@ jobs:
           pwd
           ls -la
           /usr/local/bin/kn func version
-          # ./kn func build -b=s2i --platform=linux/amd64 --image=ghcr.io/petterthunaes/shiny-spork/hello:latest
+
+      # ./kn func build -b=s2i --platform=linux/amd64 --image=ghcr.io/petterthunaes/shiny-spork/hello:latest
