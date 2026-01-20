@@ -43,4 +43,4 @@ jobs:
           chmod +x /usr/local/bin/kn-func
 
       - run: |
-          /usr/local/bin/kn func build -b=s2i --platform=linux/amd64 --image=ghcr.io/petterthunaes/shiny-spork/hello:latest
+          /usr/local/bin/kn func build -b=s2i --platform=linux/amd64 --image=ghcr.io/petterthunaes/shiny-spork/hello:latest --push
