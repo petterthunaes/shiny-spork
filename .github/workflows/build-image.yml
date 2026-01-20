@@ -37,4 +37,5 @@ jobs:
       - run: |
           wget https://github.com/knative/client/releases/download/knative-v1.20.0/kn-linux-amd64
           mv kn-linux-amd64 kn
+          chmod +x kn
           ./kn func build -b=s2i --platform=linux/amd64 --image=ghcr.io/petterthunaes/shiny-spork/hello:latest
