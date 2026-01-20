@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       # Setup Knative func CLI
-      - uses: knative/func-setup-action@v1 # Use the official action (or equivalent)
+      # - uses: knative/func-setup-action@v1 # Use the official action (or equivalent)
       # Log in to a container registry (e.g., Docker Hub, GitHub Container Registry)
       - uses: docker/login-action@v3
         with:
@@ -21,11 +21,11 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_TOKEN }}
       # Build the function image
-      - uses: knative/func-build-action@v1 # Use the official action (or equivalent)
-        with:
-          path: .
-          publish: true
-          name: ghcr.io/petterthunaes/shiny-spork/hello:latest
+      # - uses: knative/func-build-action@v1 # Use the official action (or equivalent)
+      #   with:
+      #     path: .
+      #     publish: true
+      #     name: ghcr.io/petterthunaes/shiny-spork/hello:latest
 
       # Deploy the function to a Knative cluster
       # This step requires a running K8s cluster and context configured in the runner
@@ -33,3 +33,8 @@ jobs:
       #   with:
       #     image: your-registry-url/your-user/your-image-name
       #     command: apply
+
+      - run: |
+          wget https://github.com/knative/client/releases/download/knative-v1.20.0/kn-linux-amd64
+          mv kn-linux-amd64 kn
+          ./kn func build -b=s2i --platform=linux/amd64 --image=ghcr.io/petterthunaes/shiny-spork/hello:latest
