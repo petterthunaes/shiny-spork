@@ -36,11 +36,12 @@ jobs:
 
       - run: |
           wget -q https://github.com/knative/client/releases/download/knative-v1.20.0/kn-linux-amd64
-          mv kn-linux-amd64 kn
+          mv kn-linux-amd64 /usr/local/bin/kn
           chmod +x kn
           wget -q https://github.com/knative/func/releases/download/knative-v1.20.1/func_linux_amd64
-          mv func_linux_amd64 kn-func
+          mv func_linux_amd64 /usr/local/bin/kn-func
           echo $PATH
           pwd
           ls -la
-          ./kn func build -b=s2i --platform=linux/amd64 --image=ghcr.io/petterthunaes/shiny-spork/hello:latest
+          /usr/local/bin/kn func version
+          # ./kn func build -b=s2i --platform=linux/amd64 --image=ghcr.io/petterthunaes/shiny-spork/hello:latest
